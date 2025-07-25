@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: `http://182.227.116.167:5555/api`,
+  // axios 또는 fetch 사용 시
+  baseURL: "https://networksorcerer.shop/api",
   headers: {
     "Content-Type": "application/json",
   },
