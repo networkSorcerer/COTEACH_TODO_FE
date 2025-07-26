@@ -59,14 +59,15 @@ function App() {
             }}
           />
         </Col>
-        {!isFilled && (
-          <p style={{ color: "red", marginTop: "5px" }}>할 일을 등록해주세요</p>
-        )}
+
         <Col xs={12} sm={2}>
           <button className="button-add" onClick={addTask}>
             추가
           </button>
         </Col>
+        {!isFilled && (
+          <p style={{ color: "red", marginTop: "3px" }}>할 일을 등록해주세요</p>
+        )}
       </Row>
 
       <TodoBoard todoList={todoList} getTasks={getTasks} />
