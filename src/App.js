@@ -12,7 +12,7 @@ import api from "./utils/api";
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [todoValue, setTodoValue] = useState("");
-
+  const [isFilled, setIsFilled] = useState(false);
   const getTasks = async () => {
     const response = await api.get("/tasks");
     console.log("response", response);
@@ -20,6 +20,9 @@ function App() {
   };
 
   const addTask = async () => {
+    if (!todoValue.trim()) {
+      return;
+    }
     try {
       const response = await api.post("/tasks", {
         task: todoValue,
@@ -50,9 +53,15 @@ function App() {
             placeholder="할일을 입력하세요"
             className="input-box"
             value={todoValue}
-            onChange={(event) => setTodoValue(event.target.value)}
+            onChange={(event) => {
+              const value = event.target.value;
+              setTodoValue(value), setIsFilled(value.trim().length > 0);
+            }}
           />
         </Col>
+        {!isFilled && (
+          <p style={{ color: "red", marginTop: "5px" }}>할 일을 등록해주세요</p>
+        )}
         <Col xs={12} sm={2}>
           <button className="button-add" onClick={addTask}>
             추가
