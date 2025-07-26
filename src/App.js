@@ -32,6 +32,7 @@ function App() {
         console.log("성공");
         setTodoValue("");
         getTasks();
+        setIsFilled(false);
       } else {
         throw new Error("task can not be added");
       }
