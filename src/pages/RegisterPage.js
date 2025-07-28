@@ -11,36 +11,37 @@ const RegisterPage = () => {
   const [secPassword, setSecPassword] = useState();
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      // 입력값이 모두 채워졌는지 검사
       if (!name || !email || !password || !secPassword) {
         throw new Error("모든 정보를 입력해주세요.");
       }
 
-      // 이메일 형식 검사 (선택사항이지만 UX 향상)
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         throw new Error("올바른 이메일 형식을 입력해주세요.");
       }
+
       if (password !== secPassword) {
         throw new Error("패스워드가 일치하지 않습니다 다시 입력해주세요");
       }
-      const response = await api.post("/user", { name, email, password });
-      if (response.status == 200) {
-        navigate("/login");
-      } else {
-        throw new Error(response.data.error);
-      }
 
-      console.log("register", response);
+      const response = await api.post("/user", { name, email, password });
+
+      // 200이면 회원가입 성공
+      if (response.status === 200) {
+        navigate("/login");
+      }
     } catch (error) {
       const message =
         error.response?.data?.error || error.message || "알 수 없는 오류";
       setError(message);
     }
   };
+
   return (
     <div className="display-center">
       {error && <div className="red-error">{error}</div>}
