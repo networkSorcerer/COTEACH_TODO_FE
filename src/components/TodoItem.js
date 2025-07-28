@@ -46,7 +46,8 @@ const TodoItem = ({ item, getTasks }) => {
           <div className="todo-content">
             <input
               type="text"
-              className="px-4 py-2 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full max-w-md mx-auto px-4 py-2 sm:px-3 sm:py-1.5 border border-gray-300 rounded-lg shadow-sm 
+             text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
               placeholder="할 일을 입력하세요..."
               value={taskInputs[item._id] ?? item.task}
               onChange={(e) => handleInputChange(item._id, e.target.value)}
