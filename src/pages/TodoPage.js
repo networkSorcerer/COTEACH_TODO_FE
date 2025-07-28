@@ -1,13 +1,10 @@
 import React from "react";
-
-import TodoBoard from "./components/TodoBoard";
-
+import TodoBoard from "../components/TodoBoard";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import { useEffect, useState } from "react";
 import api from "./utils/api";
-
 
 const TodoPage = () => {
   const [todoList, setTodoList] = useState([]);
