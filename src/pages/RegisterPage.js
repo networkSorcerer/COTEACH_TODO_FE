@@ -36,9 +36,8 @@ const RegisterPage = () => {
         navigate("/login");
       }
     } catch (error) {
-      const message =
-        error.response?.data?.error || error.message || "알 수 없는 오류";
-      setError(message);
+      console.log("catch error:", error);
+      setError(error.error || error.message || "알 수 없는 오류");
     }
   };
 
