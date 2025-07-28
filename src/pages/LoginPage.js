@@ -7,16 +7,21 @@ import api from "../utils/api";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState("");
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
       const response = await api.post("/user/login", { email, password });
-      console.log("rrr", response);
-    } catch (error) {}
+      if (response.status === 200) {
+      }
+      throw new Error(response.message);
+    } catch (error) {
+      setError(error.message);
+    }
   };
   return (
     <div className="display-center">
+      {error && <div className="red-error">{error}</div>}
       <Form className="login-box" onSubmit={handleLogin}>
         <h1>로그인</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
