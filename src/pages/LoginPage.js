@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../utils/api";
 
 const LoginPage = () => {
@@ -9,6 +9,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
@@ -16,6 +17,9 @@ const LoginPage = () => {
       if (response.status === 200) {
         setUser(response.data.user);
         sessionStorage.setItem("token", response.data.token);
+        api.defaults.headers["authorization"] = "Bearer " + response.data.token;
+        setError("");
+        navigate("/");
       }
       throw new Error(response.message);
     } catch (error) {
