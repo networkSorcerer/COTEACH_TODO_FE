@@ -15,6 +15,10 @@ const RegisterPage = () => {
         throw new Error("패스워드가 일치하지 않습니다 다시 입력해주세요");
       }
       const response = await api.post("/user", { name, email, password });
+      console.log("name", name);
+      console.log("email", email);
+      console.log("password", password);
+      
       console.log("register", response);
     } catch (error) {
       setError(error);
