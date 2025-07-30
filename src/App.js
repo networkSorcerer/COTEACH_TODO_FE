@@ -6,6 +6,7 @@ import TodoPage from "./pages/TodoPage";
 import RegisterPage from "./pages/RegisterPage";
 import { useState } from "react";
 import PrivateRoute from "./route/PrivateRoute";
+import api from "./utils/api";
 
 function App() {
   const [user, setUser] = useState(null);
