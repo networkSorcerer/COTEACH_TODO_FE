@@ -25,7 +25,7 @@ const TodoItem = ({ item, getTasks }) => {
         getTasks();
       }
     }, 500), // 500ms 후에 실행
-    []
+    [getTasks]
   );
 
   const handleInputChange = (id, value) => {
@@ -53,7 +53,7 @@ const TodoItem = ({ item, getTasks }) => {
               onChange={(e) => handleInputChange(item._id, e.target.value)}
             />
           </div>
-          <div>by {item.author.name}</div>
+          <div>by {item.author?.name ?? "익명"}</div>
           <div>
             <button
               className="button-delete"
