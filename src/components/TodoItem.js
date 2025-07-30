@@ -53,7 +53,7 @@ const TodoItem = ({ item, getTasks }) => {
               onChange={(e) => handleInputChange(item._id, e.target.value)}
             />
           </div>
-
+          <div>by {item.author.name}</div>
           <div>
             <button
               className="button-delete"
