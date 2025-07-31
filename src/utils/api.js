@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://networksorcerer.shop/api",
+  // baseURL: "https://networksorcerer.shop/api",
+  baseURL: "http://localhost:5000/api",
+
   headers: {
     "Content-Type": "application/json",
     authorization: "Bearer " + sessionStorage.getItem("token"),

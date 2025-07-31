@@ -53,7 +53,8 @@ const TodoPage = () => {
             value={todoValue}
             onChange={(event) => {
               const value = event.target.value;
-              setTodoValue(value), setIsFilled(value.trim().length > 0);
+              setTodoValue(value);
+              setIsFilled(value.trim().length > 0);
             }}
           />
         </Col>

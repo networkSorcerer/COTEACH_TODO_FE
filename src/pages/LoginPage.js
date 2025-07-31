@@ -19,8 +19,9 @@ const LoginPage = ({ user, setUser }) => {
         api.defaults.headers["authorization"] = "Bearer " + response.data.token;
         setError("");
         navigate("/");
+      } else {
+        throw new Error(response.message);
       }
-      throw new Error(response.message);
     } catch (error) {
       setError(error.message);
     }
@@ -43,7 +44,11 @@ const LoginPage = ({ user, setUser }) => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control onChange={(event) => setPassword(event.target.value)} />
+          <Form.Control
+            type="password"
+            placeholder="Enter password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
         </Form.Group>
         <div className="button-box">
           <Button type="submit" className="btton-primary">

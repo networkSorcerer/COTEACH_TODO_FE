@@ -15,6 +15,7 @@ function App() {
       const storedToken = sessionStorage.getItem("token");
       if (storedToken) {
         const response = await api.get("/user/me");
+        console.log("mememememememememe", response);
         setUser(response.data.user);
       }
     } catch (error) {
